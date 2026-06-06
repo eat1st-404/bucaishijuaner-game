@@ -1,6 +1,6 @@
 {
-  "name": "15秒修改答题卡",
-  "description": "一个高紧张感的小游戏：为了与暗恋对象去同一所大学，在考试结束前的最后15秒内，玩家需要通过滑动擦除和点击涂卡，将满分100分的答题卡精准修改为70分。配合心跳声和颤抖压力系统，带来紧迫的沉浸体验。",
+  "name": "别踩试卷儿",
+  "description": "一个高紧张感的答题卡小游戏。玩家要在 15 秒内，把一张满分答题卡精准改到 70 分；擦除残留、多涂误判和压力心跳会一起把节奏推到最紧。",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

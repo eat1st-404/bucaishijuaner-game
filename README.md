@@ -1,20 +1,32 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# 别踩试卷儿
 
-# Run and deploy your AI Studio app
+一个手机优先的 React + Vite 小游戏。
 
-This contains everything you need to run your app locally.
+玩家要在 15 秒内，把一张原本满分的答题卡改到刚好 70 分。擦除不干净会留下残影，多涂也会直接判错，所以不是乱改，而是要稳。
 
-View your app in AI Studio: https://ai.studio/apps/f4e1b44a-1b24-4198-8545-aba888c7ad06
+## 本地运行
 
-## Run Locally
+1. 安装依赖
 
-**Prerequisites:**  Node.js
+```bash
+npm install
+```
 
+2. 启动开发环境
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+```bash
+npm run dev
+```
+
+3. 构建生产版本
+
+```bash
+npm run build
+```
+
+## 技术栈
+
+- React 19
+- Vite
+- TypeScript
+- Tailwind CSS v4
