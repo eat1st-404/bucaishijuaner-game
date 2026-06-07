@@ -157,78 +157,36 @@ export default function App() {
       if (!qState) return prev;
 
       const currentVal = qState[opt];
-      if (currentVal < 0.5) {
+
+      if (currentVal === 0) {
         audioEngine.playScribble();
         return {
           ...prev,
-          [qId]: {
-            ...qState,
-            [opt]: 1.0,
-          },
+          [qId]: { ...qState, [opt]: 1.0 },
+        };
+      }
+
+      if (currentVal >= 0.5) {
+        audioEngine.playErase();
+        return {
+          ...prev,
+          [qId]: { ...qState, [opt]: 0.3 },
         };
       }
 
       audioEngine.playErase();
-      const newVal = Math.max(0, currentVal - 0.15);
       return {
         ...prev,
-        [qId]: {
-          ...qState,
-          [opt]: newVal,
-        },
+        [qId]: { ...qState, [opt]: 0 },
       };
     });
 
     setStressLevel((prev) => Math.min(100, prev + 0.5));
   };
 
-  const handleBubbleEnter = (qId: number, opt: OptionType) => {
-    if (!isPointerDown) return;
+  const handleBubbleEnter = (_qId: number, _opt: OptionType) => {};
 
-    setAnswerSheet((prev) => {
-      const qState = prev[qId];
-      if (!qState) return prev;
-
-      const currentVal = qState[opt];
-      if (currentVal === 0) return prev;
-
-      const newVal = Math.max(0, currentVal - 0.2);
-      if (newVal > 0) audioEngine.playErase();
-      return {
-        ...prev,
-        [qId]: {
-          ...qState,
-          [opt]: newVal,
-        },
-      };
-    });
-
-    setStressLevel((prev) => Math.min(100, prev + 0.3));
-  };
-
-  const handleBubbleMove = (qId: number, opt: OptionType) => {
-    if (!isPointerDown) return;
-
-    setAnswerSheet((prev) => {
-      const qState = prev[qId];
-      if (!qState) return prev;
-
-      const currentVal = qState[opt];
-      if (currentVal === 0) return prev;
-
-      const newVal = Math.max(0, currentVal - 0.08);
-      if (newVal > 0) audioEngine.playErase();
-      return {
-        ...prev,
-        [qId]: {
-          ...qState,
-          [opt]: newVal,
-        },
-      };
-    });
-
-    setStressLevel((prev) => Math.min(100, prev + 0.1));
-  };
+  const handleBubbleMove = (_qId: number, _opt: OptionType) => {};
 
   return (
     <div className="app-shell" style={{ '--panic-alpha': panicRatio } as React.CSSProperties}>
@@ -269,7 +227,7 @@ export default function App() {
               <span className="tip-dot" />
               <p>
                 <span className="tip-strong">操作：</span>
-                按住已涂黑选项来回摩擦擦除，点击空白可重新填黑。目标是把 <b>100 分</b> 改到 <b>70 分</b>。
+                点击已涂黑选项两次擦除，点击空白选项重新填黑。目标是把 <b>100 分</b> 改到 <b>70 分</b>。
               </p>
             </div>
 
